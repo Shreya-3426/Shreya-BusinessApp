@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IndusMove Logistics | Industrial Transportation Service</title>
+<link rel="icon" href="images/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="#home"><img src="images/logo.svg" alt="IndusMove logo" width="38" height="38">IndusMove</a>
+  <nav>
+    <a href="#about">About</a><a href="#services">Services</a><a href="#dashboard">Dashboard</a><a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+<section id="home" class="hero">
+  <img src="images/logo.svg" alt="IndusMove Logistics logo" width="84" height="84">
+  <h1>IndusMove Logistics</h1>
+  <p class="lead">Heavy cargo moved on schedule, and visible from loading dock to delivery.</p>
+  <p>We run trucks, trailers and tankers for factories, plants and construction sites. Our manager dashboard shows every vehicle and shipment in one place, so delays are caught before they stop your production line.</p>
+  <a class="btn" href="#track">Get Started</a>
+</section>
+<div class="hazard" aria-hidden="true"></div>
+
+<section id="about">
+  <h2>About the business</h2>
+  <div class="grid">
+    <article><h3>What we do</h3><p>Road transport of raw materials, finished goods, chemicals and heavy machinery between industrial sites.</p></article>
+    <article><h3>Who we serve</h3><p>Steel, cement, auto-parts, chemical and engineering plants, plus EPC contractors that need dependable fleet capacity.</p></article>
+    <article><h3>Service area</h3><p>Industrial corridors across India: Delhi NCR, Pune–Mumbai, Chennai–Bengaluru and Kolkata–Jamshedpur–Odisha belt.</p></article>
+    <article><h3>Our promise</h3><p>Right vehicle, fixed rate per km, GPS tracking on every trip, and a 93%+ on-time record.</p></article>
+  </div>
+</section>
+
+<section id="services">
+  <h2>Services and pricing</h2>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>Service</th><th>Description</th><th>Price</th></tr></thead>
+    <tbody>
+      <tr><td>Full Truck Load (FTL)</td><td>Dedicated 10–32 tonne truck, plant to plant</td><td>₹42 / km</td></tr>
+      <tr><td>Bulk Material Haulage</td><td>Tipper and trailer loads for ore, sand, cement</td><td>₹38 / km</td></tr>
+      <tr><td>Chemical Tanker</td><td>Licensed hazmat tankers with trained drivers</td><td>₹70 / km</td></tr>
+      <tr><td>Over-Dimensional Cargo</td><td>Low-bed trailers with permits and escort</td><td>₹95 / km</td></tr>
+      <tr><td>Machinery Relocation</td><td>Dismantle, load, move and unload plant equipment</td><td>From ₹25,000</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p><a class="link" href="#contact">Request a quote for any service</a></p>
+</section>
+
+<section id="dashboard">
+  <div class="head"><h2>Manager dashboard</h2><a class="link" href="#track">Track a shipment</a></div>
+  <p class="sub">What a transport manager needs to know right now. Sample data for October 2026.</p>
+  <div class="kpis">
+    <div class="kpi"><b>28</b><span>Vehicles available (of 112)</span></div>
+    <div class="kpi"><b>1,420</b><span>Trips completed this month</span></div>
+    <div class="kpi"><b>64</b><span>Shipments in transit</span></div>
+    <div class="kpi warn"><b>9</b><span>Delayed shipments</span></div>
+    <div class="kpi"><b>93.5%</b><span>On-time delivery</span></div>
+    <div class="kpi"><b>3.6 km/L</b><span>Average fuel efficiency</span></div>
+  </div>
+  <div class="chartbox"><h3>Weekly trips: on time vs delayed</h3><div class="chart"><canvas id="tripChart"></canvas></div></div>
+
+  <div id="track" class="tracker">
+    <h3>Track a shipment</h3>
+    <p>Enter a shipment ID to see its live status. Try
+      <button class="chip" data-id="TRK1025">TRK1025</button>
+      <button class="chip" data-id="TRK1021">TRK1021</button>
+      <button class="chip" data-id="TRK1023">TRK1023</button>
+    </p>
+    <form id="trackForm">
+      <label for="shipId" class="sr">Shipment ID</label>
+      <input id="shipId" placeholder="e.g. TRK1025" autocomplete="off" required>
+      <button class="btn" type="submit">Track</button>
+    </form>
+    <div id="result" aria-live="polite"></div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact and enquiry</h2>
+  <div class="grid">
+    <article><h3>Email</h3><p><a class="link" href="mailto:operations@indusmove.example?subject=Transport%20enquiry">operations@indusmove.example</a></p></article>
+    <article><h3>Phone</h3><p><a class="link" href="tel:+919000000000">+91 90000 00000</a></p></article>
+    <article><h3>Head office</h3><p>Industrial Area, Phase 2, India<br><a class="link" href="https://www.google.com/maps/search/?api=1&query=industrial+transport+company" target="_blank" rel="noopener">Open in Google Maps</a></p></article>
+    <article><h3>Rules and permits</h3><p>Our vehicles follow national road-transport rules.<br><a class="link" href="https://morth.nic.in" target="_blank" rel="noopener">Ministry of Road Transport</a></p></article>
+  </div>
+  <form id="enquiryForm" class="enquiry">
+    <h3>Send us an enquiry</h3>
+    <div class="row">
+      <label>Your name<input name="name" required></label>
+      <label>Phone<input name="phone" type="tel" required></label>
+      <label>Email<input name="email" type="email" required></label>
+      <label>Cargo type<select name="cargo"><option>Bulk material</option><option>Chemicals</option><option>Heavy machinery</option><option>Over-dimensional cargo</option><option>Other</option></select></label>
+    </div>
+    <label>Pickup city, drop city and weight<textarea name="message" rows="4" required></textarea></label>
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+    <button class="btn" type="submit">Send enquiry</button>
+    <a class="btn alt" id="waBtn" href="#contact" target="_blank" rel="noopener">Message on WhatsApp</a>
+    <p id="formMsg" aria-live="polite"></p>
+  </form>
+  <p><a class="link" href="https://www.linkedin.com/company/indusmove" target="_blank" rel="noopener">Follow us on LinkedIn</a></p>
+</section>
+</main>
+
+<footer>© <span id="yr"></span> IndusMove Logistics. Student project for IT in Business and Transportation.</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
