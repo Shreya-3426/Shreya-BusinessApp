@@ -33,6 +33,7 @@ const enq = document.getElementById("enquiryForm");
 const msg = document.getElementById("formMsg");
 enq.addEventListener("submit", async e => {
   e.preventDefault();
+  if (OWNER_EMAIL.includes("your-email")) { msg.textContent = "Owner email is not set yet. Put your real email in line 2 of script.js."; return; }
   const btn = enq.querySelector("button[type=submit]");
   btn.disabled = true;
   msg.textContent = "Sending...";
@@ -46,7 +47,9 @@ enq.addEventListener("submit", async e => {
     msg.textContent = "Thank you. Your enquiry was sent. We will call you within one working day.";
     enq.reset();
   } catch (err) {
-    msg.textContent = "The enquiry could not be sent. Check your internet connection or use the WhatsApp button.";
+    const f = new FormData(enq);
+    const body = "Name: " + f.get("name") + "\nPhone: " + f.get("phone") + "\nEmail: " + f.get("email") + "\nCargo: " + f.get("cargo") + "\n" + f.get("message");
+    msg.innerHTML = 'It could not be sent automatically. <a class="link" href="mailto:' + OWNER_EMAIL + '?subject=Transport%20enquiry&body=' + encodeURIComponent(body) + '">Click here to send it with your email app</a>, or use the WhatsApp button.';
   }
   btn.disabled = false;
 });
@@ -59,15 +62,15 @@ document.getElementById("waBtn").addEventListener("click", function () {
 });
 
 // Dashboard chart
-Chart.defaults.color = "#cfd9e6";
-Chart.defaults.borderColor = "#28405c";
+Chart.defaults.color = "#12263f";
+Chart.defaults.borderColor = "rgba(18,38,63,.15)";
 new Chart(document.getElementById("tripChart"), {
   type: "bar",
   data: {
     labels: ["Week 1", "Week 2", "Week 3", "Week 4"],
     datasets: [
-      {label: "On time", data: [318, 335, 342, 330], backgroundColor: "#4aa3ff"},
-      {label: "Delayed", data: [27, 21, 18, 29], backgroundColor: "#ff8c1a"}
+      {label: "On time", data: [318, 335, 342, 330], backgroundColor: "#12263f"},
+      {label: "Delayed", data: [27, 21, 18, 29], backgroundColor: "#d97706"}
     ]
   },
   options: {responsive: true, maintainAspectRatio: false, scales: {x: {stacked: true}, y: {stacked: true, title: {display: true, text: "Trips"}}}}
